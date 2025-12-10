@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Favorite Devotionals</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-image">
+        <h1>My Favorite<br>Devotionals</h1>
+      </div>
+    </header>
+    <main>
+      <div class="content-box">
+        <!-- Add your devotional content here -->
+         <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devotionals</title>
+<style>
+/* ====== TABLE STYLING ====== */
+table.redTable {
+  font-family: Arial, Helvetica, sans-serif;
+  border: 2px solid #A40808;
+  background-color: #EEE7DB;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+table.redTable td, table.redTable th {
+  border: 2px solid #AAAAAA;
+  padding: 6px 8px;
+}
+table.redTable tbody td {
+  font-size: 16px;
+}
+table.redTable tr:nth-child(even) {
+  background: #F5C8BF;
+}
+table.redTable thead {
+  background: #A40808;
+}
+table.redTable thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align: center;
+  border-left: 2px solid #A40808;
+}
+table.redTable thead th:first-child {
+  border-left: none;
+}
+table.redTable tfoot {
+  font-size: 13px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: #A40808;
+}
+table.redTable tfoot td {
+  font-size: 13px;
+}
+table.redTable tfoot .links {
+  text-align: right;
+}
+table.redTable tfoot .links a {
+  display: inline-block;
+  background: #FFFFFF;
+  color: #A40808;
+  padding: 2px 8px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+table.redTable tfoot .links a:hover {
+  background: #A40808;
+  color: #FFFFFF;
+}
+
+/* ====== FORM STYLING ====== */
+form.devotionalForm {
+  max-width: 500px;
+  margin: 30px auto;
+  background-color: #EEE7DB;
+  border: 2px solid #A40808;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+form.devotionalForm h2 {
+  text-align: center;
+  color: #A40808;
+  margin-bottom: 15px;
+}
+form.devotionalForm label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #A40808;
+}
+form.devotionalForm input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #AAAAAA;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+form.devotionalForm input:focus {
+  outline: none;
+  border-color: #A40808;
+  box-shadow: 0 0 5px rgba(164, 8, 8, 0.5);
+}
+form.devotionalForm button {
+  background-color: #A40808;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+form.devotionalForm button:hover {
+  background-color: #820707;
+}
+</style>
+</head>
+<body>
+
+<table class="redTable" id="devotionalTable">
+  <thead>
+    <tr>
+      <th>Speaker</th>
+      <th>Title</th>
+      <th>Location</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>President & Sister Meredith</td>
+      <td>Preserving the Spirit of Ricks at BYU-Idaho</td>
+      <td>BYU-Idaho</td>
+      <td>2025</td>
+    </tr>
+    <tr>
+      <td>Elder Clark G. & Sister Christine C. Gilbert</td>
+      <td>Finding the Savior in the Proclamation</td>
+      <td>BYU-Idaho</td>
+      <td>2025</td>
+    </tr>
+    <tr>
+      <td>Stephanie L. Colvin</td>
+      <td>First Things First</td>
+      <td>BYU-Idaho</td>
+      <td>2025</td>
+    </tr>
+  </tbody>
+</table>
+
+<form class="devotionalForm" id="devotionalForm">
+  <h2>Add a New Devotional</h2>
+
+  <label for="speaker">Speaker:</label>
+  <input type="text" id="speaker" name="speaker" placeholder="Enter speaker's name" required>
+
+  <label for="title">Title:</label>
+  <input type="text" id="title" name="title" placeholder="Enter devotional title" required>
+
+  <label for="location">Location:</label>
+  <input type="text" id="location" name="location" placeholder="Enter location" required>
+
+  <label for="year">Year:</label>
+  <input type="number" id="year" name="year" placeholder="Enter year (e.g., 2025)" required>
+
+  <button type="submit">Update Table</button>
+</form>
+
+<script>
+document.getElementById("devotionalForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // prevent page reload
+
+  // Get form values
+  const speaker = document.getElementById("speaker").value;
+  const title = document.getElementById("title").value;
+  const location = document.getElementById("location").value;
+  const year = document.getElementById("year").value;
+
+  // Get the table body
+  const tableBody = document.querySelector("#devotionalTable tbody");
+
+  // Create a new row
+  const newRow = document.createElement("tr");
+  newRow.innerHTML = `
+    <td>${speaker}</td>
+    <td>${title}</td>
+    <td>${location}</td>
+    <td>${year}</td>
+  `;
+
+  // Add new row to the table
+  tableBody.appendChild(newRow);
+
+  // Clear the form fields
+  document.getElementById("devotionalForm").reset();
+});
+</script>
+<div>
+  <footer>
+    <p>Copyright 2025 &copy;</p>
+    <p><a href="../../index.html">Index</a></p>
+  </footer>
+</div>
+</body>
+</html>

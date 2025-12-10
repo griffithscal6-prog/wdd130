@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Feed Sign Up</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: rgb(120, 96, 64);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Georgia, serif;
+    }
+
+    /* Outer card */
+    #formContainer {
+      width: 420px;
+      background-color: white;
+      border: 8px solid #132a8e;
+      border-radius: 25px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Header image area */
+    .header {
+      position: relative;
+      height: 170px;
+      background-image: url("images/jesus_feeds_5000.jpeg");
+      background-size: cover;
+      background-position: fill;
+      text-align: center;
+      color: white;
+      text-shadow: 2px 2px 5px black;
+    }
+
+    /* Close button */
+    #closeBtn {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: white;
+      border: 1px solid #444;
+      border-radius: 4px;
+      font-weight: bold;
+      padding: 2px 6px;
+      cursor: pointer;
+    }
+
+    .header h1 {
+      position: absolute;
+      bottom: 45px;
+      left: 0;
+      right: 0;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .header h2 {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      font-size: 20px;
+    }
+
+    /* Form styling */
+    form {
+      padding: 15px 30px 20px;
+      flex: 1;
+    }
+
+    h3 {
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    label {
+      display: inline-block;
+      width: 90px;
+      font-size: 14px;
+      margin: 4px 0;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+      width: 55%;
+      padding: 3px;
+      margin: 4px 0;
+      border: 1px solid #777;
+      border-radius: 3px;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      margin-left: 6px;
+    }
+
+    button[type="submit"] {
+      margin-top: 8px;
+      padding: 4px 12px;
+      border: 1px solid #555;
+      background-color: #f3f3f3;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #e1e1e1;
+    }
+
+    /* Footer book images */
+    .books {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      background-color: #111;
+      padding: 5px 8px;
+    }
+
+    .books img {
+      width: 70px;
+      height: 90px;
+      border: 1px solid #222;
+      display: block;
+    }  
+    /* Center only the newsletter, conditions, and submit button */
+#extraOptions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#extraOptions label {
+  margin-left: 5px;
+  width: auto;
+}
+
+#extraOptions button {
+  margin-top: 10px;
+  width: auto;
+}
+#output {
+    color: cyan;
+    margin-left: 30px;
+}
+  </style>
+</head>
+
+<body>
+  <div id="formContainer">
+    <div class="header">
+      <button type="button" id="closeBtn">X</button>
+      <h1>Daily Feed</h1>
+      <h2>Scripture a Day</h2>
+    </div>
+
+    <form id="myForm">
+      <h3>Sign Up for Daily Scripture Feed</h3>
+
+      <label for="username">User Name:</label>
+      <input type="text" id="username" name="Username" required><br>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="Password" required><br>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="Email" required><br>
+
+      <label>Gender:</label>
+      <input type="radio" id="male" name="Gender" value="Male" required>
+      <label for="male">Male</label>
+      <input type="radio" id="female" name="Gender" value="Female" required>
+      <label for="female">Female</label><br>
+
+      <div id="extraOptions">
+        <div>
+            <input type="checkbox" id="newsletter" name="Newsletter" value="Requested">
+            <label for="newsletter">Subscribe to newsletter</label>
+        </div>
+
+        <div>
+            <input type="checkbox" id="conditions" name="Terms and Conditions" value="Acknowledged" required>
+            <label for="conditions">I acknowledge the terms and conditions</label>
+        </div>
+
+        <button type="submit">Submit</button>
+      </div>
+
+    </form>
+
+    <div class="books">
+      <img src="images/old_testament.webp" alt="Old Testament">
+      <img src="images/new_testament.webp" alt="New Testament">
+      <img src="images/book_of_mormon.webp" alt="Book of Mormon">
+      <img src="images/doctrine_and_covenants.webp" alt="Doctrine and Covenants">
+      <img src="images/pearl_of_great_price.webp" alt="Pearl of Great Price">
+    </div>
+  </div>
+
+  <div id="output"></div>
+
+  <script>
+    document.getElementById("closeBtn").addEventListener("click", function () {
+      document.getElementById("formContainer").style.display = "none";
+    });
+
+    const form = document.getElementById('myForm');
+    const output = document.getElementById('output');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const entries = [];
+
+      for (const [key, value] of formData.entries()) {
+        if (key === "password") {
+          entries.push(`<strong>${key}</strong>: ${value} (You should probably encrypt the password)`);
+        } else {
+          entries.push(`<strong>${key}</strong>: ${value}`);
+        }
+
+      }
+
+      output.innerHTML = `
+        <br>
+        <h3>Here is the data that would be sent to the server:</h3>
+        <ul>${entries.map(item => `<li>${item}</li>`).join('')}</ul>`;
+    });
+  </script>
+      <div>
+        <footer>
+          <p>Copyright 2025 &copy;</p>
+          <p><a href="../../index.html">Index</a></p>
+        </footer>
+      </div>
+</body>
+</html>
